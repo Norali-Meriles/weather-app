@@ -1,9 +1,14 @@
+import { Home } from './pages';
+import { Header, Footer } from './components/layout';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
+      <Header />
+      <Home />
+      <Footer />
     </div>
   );
-}
+};
 
 export default App;
