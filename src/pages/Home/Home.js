@@ -1,4 +1,10 @@
-const Home = () => {
+import useFetch from '../../hooks/useFetch/useFetch';
+
+const Home = ({ location }) => {
+  console.log(location);
+  const data = useFetch(`http://api.weatherapi.com/v1/forecast.json?key=f0adeb1c1ec54a699de201403221510&q=${location.latitude},${location.longitude}&days=5`);
+  console.log(data);
+
   return (
     <section className='container'>
       <div className='row'>
