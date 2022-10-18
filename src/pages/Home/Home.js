@@ -1,9 +1,17 @@
+import { useEffect } from 'react';
 import useFetch from '../../hooks/useFetch/useFetch';
+import { useWeatherToggleContext } from '../../providers/WeatherProvider';
+import { getLocalWeatherUrl } from '../../utils/localWeatherUrl';
 
-const Home = ({ location }) => {
-  console.log(location);
-  const data = useFetch(`http://api.weatherapi.com/v1/forecast.json?key=f0adeb1c1ec54a699de201403221510&q=${location.latitude},${location.longitude}&days=5`);
-  console.log(data);
+const Home = () => {
+  const setWeatherData = useWeatherToggleContext();
+
+  const url = getLocalWeatherUrl();
+  const weatherData = useFetch(url);
+
+  useEffect(() => {
+    setWeatherData(weatherData?.data);
+  }, [weatherData]);
 
   return (
     <section className='container'>
@@ -81,7 +89,7 @@ const Home = ({ location }) => {
           </div>
         </div>
       </div>
-    </section >
+    </section>
   );
 };
 
