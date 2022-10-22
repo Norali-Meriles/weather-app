@@ -12,10 +12,13 @@ const WeatherContent = () => {
         <button className='btn btn-primary me-4'>F</button>
       </div>
       <div className='d-flex flex-row justify-content-evenly my-3'>
-        <ForecastDayCard />
+        {weather?.forecast?.forecastday.map((forecast) => (
+          < ForecastDayCard key={forecast.date_epoch}
+            forecast={forecast} />
+        ))}
       </div>
-      <ForecastHighlightCard />
-    </div>
+      <ForecastHighlightCard current={weather?.current} />;
+    </div >
   );
 };
 
