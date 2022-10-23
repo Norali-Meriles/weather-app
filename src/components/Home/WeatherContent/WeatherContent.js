@@ -4,7 +4,7 @@ import { useWeatherContext } from '../../../providers/WeatherProvider';
 
 const WeatherContent = () => {
   const weather = useWeatherContext();
-  console.log(weather);
+
   return (
     <div className='col-8 bg-danger'>
       <div className='d-flex flex-row justify-content-end my-3'>
@@ -12,8 +12,8 @@ const WeatherContent = () => {
         <button className='btn btn-primary me-4'>F</button>
       </div>
       <div className='d-flex flex-row justify-content-evenly my-3'>
-        {weather?.forecast?.forecastday.map((forecast) => (
-          < ForecastDayCard key={forecast.date_epoch}
+        {weather?.forecast?.forecastday?.map(forecast => (
+          <ForecastDayCard key={forecast?.date_epoch}
             forecast={forecast} />
         ))}
       </div>
