@@ -1,9 +1,11 @@
-const ForecastDayCard = () => {
+const ForecastDayCard = ({ forecast }) => {
   return (
     <div className='card w-25'>
-      <img src='https://picsum.photos/200' className='card-img-top' alt='...' />
-      <div className='card-body'>
-        <p className='card-text'>Some quick example text to build on the card title and make up the bulk of the content.</p>
+      <p className='card-text text-align-center'>{forecast?.date}</p>
+      <img src={forecast?.day?.condition?.icon} className='card-img-top' alt={forecast?.day?.condition?.text} />
+      <div className='card-body d-flex justify-content-around'>
+        <p className='card-text'>{forecast?.day?.maxtemp_c}°C</p>
+        <p className='card-text'>{forecast?.day?.mintemp_c}°C</p>
       </div>
     </div>
   );
